@@ -1,29 +1,22 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
-import UserList from './UserList'
-import Logo from '../static/rr4_s.png'
 
-class App extends Component {
-  render() {
-    return (
-      <main role="main" className="container">
-        <div className="clearfix"><br/><br/><br/></div>
-        <div className="jumbotron">
-            <h2>React Router Version 4444</h2>
-            <p>This guide’s purpose is to explain the mental model to have when using React Router. We call it “Dynamic Routing”, which is quite different from the “Static Routing” you’re probably more familiar with.</p>
-            <h3>Static Routing</h3>
-            <p>If you’ve used Rails, Express, Ember, Angular etc. you’ve used static routing. In these frameworks, you declare your routes as part of your app’s initialization before any rendering takes place. React Router pre-v4 was also static (mostly).</p>
-            <h3>Dynamic Routing</h3>
-            <p>When we say dynamic routing, we mean routing that takes place as your app is rendering, not in a configuration or convention outside of a running app. That means almost everything is a component in React Router.</p>
-            <p>
-              <Link to="https://reacttraining.com/react-router/web/example/basic" target="_blank"><Button bsStyle="danger">Example &raquo;</Button></Link>
-            </p>
-        </div>
-        <UserList name="Yash Chikte" avatar={Logo} email="yashchikte0612@gmail.com" />
-      </main>
-    );
-  }
-}
+const App = () => (
+  <main role="main" className="container p-5 my-3 bg-success text-black">
+    <div className="clearfix"><br/><br/><br/></div>
+    <div className="jumbotron">
+        <h2>Cameras and audio</h2>
+        <p>In 1936, Olympus introduced its first camera, the Semi-Olympus I, fitted with the first Zuiko-branded lens. The Olympus Chrome Six was a series of folding cameras made by Takachiho, and later Olympus, from 1948 to 1956, for 6×4.5 cm or 6×6 cm exposures on 120 film.</p>
+        <h3>Medical and surgical</h3>
+        <p>Olympus manufactures endoscopic, ultrasound, electrocautery, endotherapy, and cleaning and disinfection equipment. The first flexible Endoscope in the world was co-developed and manufactured by Olympus in Tokyo. On 28 September 2012, Olympus and Sony announced that the two companies will establish a joint venture to develop new surgical endoscopes with 4K resolution (or higher) and 3D capability.</p>
+        <h3>Industrial</h3>
+        <p>Olympus manufactures and sells industrial scanners, flaw detectors, probes and transducers, thickness gages, digital cameras, image analysis software, industrial videoscopes, fiberscopes, light sources, XRF and XRD analyzers, and high-speed video cameras.</p>
+        <p>
+          <Link target="_blank"><Button bsStyle="danger">Overview &raquo;</Button></Link>
+        </p>
+    </div>
+  </main>
+)
 
 export default App

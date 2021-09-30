@@ -9,9 +9,8 @@ import {
 import App from './components/App';
 import UserList from './components/UserList';
 import About from './components/About';
-import Topics from './components/NestedRoutes';
 import registerServiceWorker from './components/registerServiceWorker';
-import Logo from './static/rr4_s.png'
+import Logo from './static/logo.png'
 render(
   <Router>
     <div>
@@ -25,14 +24,11 @@ render(
         <div className="collapse navbar-collapse" id="TopNavbar">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/userlist">User List</NavLink>
+              <NavLink className="nav-link" to="/userlist">Get User</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/about">About</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/nested-routes">Nested Routes</NavLink>
-            </li>
+            </li>           
           </ul>
         </div>
       </nav>
@@ -40,7 +36,6 @@ render(
       <Route exact path="/" component={App}/>
       <Route path="/userlist" component={UserList}/>
       <Route path="/about" component={About}/>
-      <Route path="/nested-routes" component={Topics}/>
     </div>
   </Router>,
 

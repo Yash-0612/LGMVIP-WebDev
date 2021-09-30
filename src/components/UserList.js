@@ -1,13 +1,10 @@
-import axios from "axios";
+
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
-import PropTypes from "prop-types";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 
-import { Card } from "shards-react";
+import {  Container, Row, Col,Card } from "shards-react";
 
 
 class UserList extends Component {
@@ -22,18 +19,21 @@ class UserList extends Component {
   }
 
   componentDidMount() {
+  
     fetch("https://reqres.in/api/users?page=1")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
-            isLoaded: true,
             items: result.data
-          });
+          })
+          setInterval(()=> {
+            this.setState({
+              isLoaded: true
+            });
+          },1500) ;
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+      
         (error) => {
           this.setState({
             isLoaded: true,
@@ -41,6 +41,7 @@ class UserList extends Component {
           });
         }
       )
+      
   }
 
   render() {
@@ -51,36 +52,45 @@ class UserList extends Component {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return  (
+        <Container className="dr-example-container" style={{padding: "100px"}}>
+        <Row>
+          <Col>
+       
       <Card
       className="mx-auto mt-4 text-center p-5"
-      style={{ maxWidth: "300px", minHeight: "250px" }}
+      style={{ maxWidth: "350px", minHeight: "300px"}}
     >
-        <span className="d-flex m-auto">Loading...</span>
+        <span className="d-flex m-auto p-5">Loading...</span>
         </Card>  
+        </Col>
+        </Row>
+        </Container>
       );
     } else {
       return (
-        <ul>
+        <Container className="dr-example-container bg-success" style={{padding: "100px"}}>
+        <Row>
           {items.map(item => (
-            <li key={item.id}>
+            <Col key={item.id}>
                <Card
                   className="mx-auto mt-4 text-center p-5"
-                  style={{ maxWidth: "300px", minHeight: "250px" }}
+                  style={{ maxWidth: "300px", minHeight: "250px" }}  
                 >
                  <div>
                   <img
                     className="img-thumbnail rounded-circle mx-auto mb-2 shadow-sm"
                     src={item.avatar}
                     alt={item.first_name}
-                    style={{ width: "100px", height: "100px" }}
+                    style={{ width: "150px", height: "150px"}}
                   />
                   <h4 className="mb-0">{item.first_name} {item.last_name}</h4>
                   <span className="text-muted">{item.email}</span>
                 </div>
                 </Card>
-            </li>
+           </Col>
           ))}
-        </ul>
+       </Row>
+       </Container>
       );
     }
   }
